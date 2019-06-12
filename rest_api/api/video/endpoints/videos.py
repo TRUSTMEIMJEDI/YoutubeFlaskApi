@@ -3,7 +3,7 @@ import pafy
 import json
 import requests
 from bs4 import BeautifulSoup
-from flask import request, jsonify
+from flask import request
 from flask_restplus import Resource
 from rest_api.api.video.business import create_url, update_url_title, update_url_views, update_url_desc, \
     update_url_author, update_url_author_img, update_url_cover_img, delete_post, find_by_url
