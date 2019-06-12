@@ -20,5 +20,5 @@ $ source venv/bin/activate
 (venv) $ pip install -r requirements.txt
 
 (venv) $ python setup.py develop
-(venv) $ python rest_api_demo/app.py
+(venv) $ python rest_api/app.py
 ```
