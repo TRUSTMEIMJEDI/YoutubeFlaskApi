@@ -4,7 +4,7 @@ setup(
     name='rest_api',
     version='1.0.0',
     description='Boilerplate code for a RESTful API based on Flask-RESTPlus',
-    url='https://github.com/trustmeimjedi/',
+    url='https://github.com/TRUSTMEIMJEDI/YoutubeFlaskApi',
     author='Marcin Friedrich',
 
     classifiers=[
