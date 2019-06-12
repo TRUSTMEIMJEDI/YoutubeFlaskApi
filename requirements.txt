@@ -1,0 +1,5 @@
+sqlalchemy
+pafy
+flask
+flask-restplus==0.12.1
+Flask-SQLAlchemy==2.4.0
