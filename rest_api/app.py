@@ -37,7 +37,7 @@ def initialize_app(flask_app):
 def main():
     initialize_app(app)
     log.info('>>>>> Starting development server at http://{}/api/ <<<<<'.format(app.config['SERVER_NAME']))
-    app.run(debug=settings.FLASK_DEBUG)
+    app.run(debug=settings.FLASK_DEBUG, host="0.0.0.0")
 
 
 if __name__ == "__main__":

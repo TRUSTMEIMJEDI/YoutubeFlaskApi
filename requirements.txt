@@ -2,6 +2,7 @@ requests
 beautifulsoup4
 sqlalchemy
 pafy
+youtube-dl
 flask
 flask-restplus==0.12.1
 Flask-SQLAlchemy==2.4.0

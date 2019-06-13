@@ -32,5 +32,5 @@ class Video(db.Model):
     #     self.author_img = author_img
     #     self.cover_img = cover_img
 
-    def __repr__(self):
-        return '<Video %r>' % self.title
+    # def __repr__(self):
+    #     return '<Video %r>' % self.title

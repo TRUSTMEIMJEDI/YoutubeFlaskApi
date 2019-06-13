@@ -115,11 +115,12 @@ class VideoViews(Resource):
         """
         video_views = find_by_url(url)
         if video_views.views is not None:
-            return video_views.views
+            print(video_views.views)
+            return {"views": video_views.views}
         else:
             video_url = pafy.new(url)
             update_url_views(url, video_url.viewcount)
-            return video_url.viewcount
+            return {"views": video_url.viewcount}
 
     @api.expect(video)
     @api.response(204, 'Video successfully updated.')
@@ -130,7 +131,8 @@ class VideoViews(Resource):
         # data = request.json
         video_url = pafy.new(url)
         update_url_views(url, video_url.viewcount)
-        return None, 204
+        return {"views": video_url.viewcount}
+        # return None, 204
 
 
 @ns.route('/title/<string:url>')
@@ -144,11 +146,11 @@ class VideoTitle(Resource):
         """
         video_title = find_by_url(url)
         if video_title.title is not None:
-            return video_title.title
+            return {"title": video_title.title}
         else:
             video_url = pafy.new(url)
             update_url_title(url, video_url.title)
-            return video_url.title
+            return {"title": video_url.title}
 
     @api.expect(video)
     @api.response(204, 'Video successfully updated.')
@@ -159,7 +161,8 @@ class VideoTitle(Resource):
         # data = request.json
         video_url = pafy.new(url)
         update_url_title(url, video_url.title)
-        return None, 204
+        return {"title": video_url.title}
+        # return None, 204
 
 
 @ns.route('/desc/<string:url>')
@@ -173,11 +176,11 @@ class VideoDesc(Resource):
         """
         video_desc = find_by_url(url)
         if video_desc.desc is not None:
-            return video_desc.desc
+            return {"desc": video_desc.desc}
         else:
             video_url = pafy.new(url)
             update_url_desc(url, video_url.description)
-            return video_url.description
+            return {"desc": video_url.description}
 
     @api.expect(video)
     @api.response(204, 'Video successfully updated.')
@@ -188,7 +191,8 @@ class VideoDesc(Resource):
         # data = request.json
         video_url = pafy.new(url)
         update_url_desc(url, video_url.description)
-        return None, 204
+        return {"desc": video_url.description}
+        # return None, 204
 
 
 @ns.route('/author/<string:url>')
@@ -202,11 +206,11 @@ class VideoAuthor(Resource):
         """
         video_author = find_by_url(url)
         if video_author.author is not None:
-            return video_author.author
+            return {"author": video_author.author}
         else:
             video_url = pafy.new(url)
             update_url_author(url, video_url.author)
-            return video_url.author
+            return {"author": video_url.author}
 
     @api.expect(video)
     @api.response(204, 'Video successfully updated.')
@@ -217,7 +221,8 @@ class VideoAuthor(Resource):
         # data = request.json
         video_url = pafy.new(url)
         update_url_author(url, video_url.author)
-        return None, 204
+        return {"author": video_url.author}
+        # return None, 204
 
 
 @ns.route('/author-img/<string:url>')
@@ -275,9 +280,11 @@ class VideoAuthorImg(Resource):
         """
         video_author_img = find_by_url(url)
         if video_author_img.author is not None:
-            return video_author_img.author
+            return {"author_img": video_author_img.author}
         else:
-            update_url_author_img(url, self.getAuthorImg(url))
+            authorimg = self.getAuthorImg(url)
+            update_url_author_img(url, authorimg)
+            return {"author_img": authorimg}
 
 
     @api.expect(video)
@@ -288,8 +295,10 @@ class VideoAuthorImg(Resource):
         """
         # data = request.json
         # video_url = pafy.new(url)
-        update_url_author_img(url, self.getAuthorImg(url))
-        return None, 204
+        authorimg = self.getAuthorImg(url)
+        update_url_author_img(url, authorimg)
+        return {"author_img": authorimg}
+        # return None, 204
 
 
 @ns.route('/cover-img/<string:url>')
@@ -303,11 +312,11 @@ class VideoCoverImg(Resource):
         """
         video_cover_img = find_by_url(url)
         if video_cover_img.cover_img is not None:
-            return video_cover_img.cover_img
+            return {"cover_img": video_cover_img.cover_img}
         else:
             cover = "https://img.youtube.com/vi/" + url + "/maxresdefault.jpg"
             update_url_cover_img(url, cover)
-            return cover
+            return {"cover_img": cover}
 
     @api.expect(video)
     @api.response(204, 'Video successfully updated.')
@@ -318,7 +327,8 @@ class VideoCoverImg(Resource):
         # data = request.json
         cover = "https://img.youtube.com/vi/" + url + "/maxresdefault.jpg"
         update_url_cover_img(url, cover)
-        return None, 204
+        return {"cover_img": cover}
+        # return None, 204
 
 
 @ns.route('/mp3/<string:url>')
