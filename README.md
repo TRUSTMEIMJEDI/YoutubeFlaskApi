@@ -1,3 +1,5 @@
+### Author: Marcin Friedrich
+
 # Resetting the database
 If you delete the yt.sqlite file or simply want to reset your database to an empty state, you can enter the following commands in your Python console.
 
